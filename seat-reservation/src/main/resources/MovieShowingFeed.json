@@ -1,0 +1,11 @@
+[{"movie":{"title":"Turning Red","description":"Two dimension","runningTime":85,"ticketPrice":11.0, "specialCode": "abc"},"sequenceOfTheDay":1,"showStartTime":"9,0"},
+  {"movie":{"title":"Spider-Man: No Way Home","description":"Three dimension","runningTime":90,"ticketPrice":12.0, "specialCode": "1"},"sequenceOfTheDay":2,"showStartTime":"11,0"},
+  {"movie":{"title":"The Batman","description":"Special effect","runningTime":95,"ticketPrice":9.0, "specialCode": "efg"},"sequenceOfTheDay":3,"showStartTime":"12,50"},
+  {"movie":{"title":"Turning Red","description":"Two dimension","runningTime":85,"ticketPrice":11.0, "specialCode": "abc"},"sequenceOfTheDay":4,"showStartTime":"14,30"},
+  {"movie":{"title":"Spider-Man: No Way Home","description":"Three dimension","runningTime":90,"ticketPrice":12.0, "specialCode": "1"},"sequenceOfTheDay":5,"showStartTime":"16,10"},
+  {"movie":{"title":"The Batman","description":"Special effect","runningTime":95,"ticketPrice":9.0, "specialCode": "efg"},"sequenceOfTheDay":6,"showStartTime":"17,50"},
+  {"movie":{"title":"Turning Red","description":"Two dimension","runningTime":85,"ticketPrice":11.0, "specialCode": "abc"},"sequenceOfTheDay":7,"showStartTime":"19,30"},
+  {"movie":{"title":"Spider-Man: No Way Home","description":"Three dimension","runningTime":90,"ticketPrice":12.0, "specialCode": "1"},"sequenceOfTheDay":8,"showStartTime":"21,10"},
+  {"movie":{"title":"The Batman","description":"Special effect","runningTime":95,"ticketPrice":9.0, "specialCode": "efg"},"sequenceOfTheDay":9,"showStartTime":"23,0"}
+]
+
