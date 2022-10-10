@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,6 @@ public class SeatReservationServiceImpl implements  SeatReservationService{
 
     /**
      * reserve method is used to reserve the show booking
-     * @param reservation
      * @return reservation
      */
     public Reservation reserve(Reservation reservation) throws InvalidInputException {
@@ -54,10 +54,25 @@ public class SeatReservationServiceImpl implements  SeatReservationService{
         return new Shows(listSchedule());
     }
 
+    /**
+     * listShowScheduleInTextFormat method is used to show the schedule in text format
+     * @return String
+     */
+
+    public String listShowScheduleInTextFormat(){
+        StringBuilder scheduleText= new StringBuilder();
+        for(Showing show:listSchedule()){
+            scheduleText.append(MessageFormat.format("{0}: {1} {2} {3} ${4} {5}", show.getSequenceOfTheDay(), show.getShowStartTime(), show.getMovie().getTitle(), show.getMovie().getRunningTime(), show.getDiscountedTicketPrice(), System.lineSeparator()));
+        }
+        return scheduleText.toString();
+    }
+
+
     private List<Showing> listSchedule() {
         if(schedule == null){
             schedule = InitialRuleSetup.getShowingList();
         }
         return schedule;
     }
+
 }

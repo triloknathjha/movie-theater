@@ -20,11 +20,19 @@ public class SeatReservationServiceImplTest {
     @InjectMocks
     private SeatReservationServiceImpl seatReservationService;
 
-    // Method to test service show schedule successfully
+    // Method to test service show schedule in json format successfully
     @Test
-    public void testListShowScheduleSuccess() {
+    public void testListShowScheduleJsonSuccess() {
         Shows shows = TestUtil.listShowSchedule();
         Shows showsResponse = seatReservationService.listShowSchedule();
+        assertEquals(shows, showsResponse);
+    }
+
+    // Method to test service show schedule in text format successfully
+    @Test
+    public void testListShowScheduleTextSuccess() {
+        String shows = TestUtil.listShowScheduleInTextFormat();
+        String showsResponse = seatReservationService.listShowScheduleInTextFormat();
         assertEquals(shows, showsResponse);
     }
 

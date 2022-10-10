@@ -6,4 +6,6 @@ public interface TestConstant {
     String TEST_CUSTOMER_NAME = "TestCustomer";
     String TEST_CUSTOMER_ID = "123";
 
+    String FORMAT = "format";
+
 }

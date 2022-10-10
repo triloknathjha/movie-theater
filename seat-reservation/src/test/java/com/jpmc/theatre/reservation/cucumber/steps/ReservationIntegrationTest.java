@@ -39,12 +39,18 @@ public class ReservationIntegrationTest {
     }
 
     @And("^receive a non-empty Get valid response$")
-    public void receiveGetNonEmptyValidBody() {
+    public void receiveGetNonEmptyValidResponse() {
         response.then().body(Matchers.notNullValue());
         List<Showing> shows = JsonPath.from(response.getBody().asString()).get("shows");
         Assert.assertTrue(shows.size() > 0);
     }
 
+    @And("^receive a non-empty Get valid text response$")
+    public void receiveGetNonEmptyValidTextResponse() {
+        response.then().body(Matchers.notNullValue());
+        String shows = response.getBody().asString();
+        Assert.assertEquals(shows, TestUtil.listShowScheduleInTextFormat());
+    }
     @When("make a POST call on ([^\"]*)$")
     public void makePostCallToMakeReservation(String path) throws IOException {
         RestAssured.baseURI =  baseUrl;

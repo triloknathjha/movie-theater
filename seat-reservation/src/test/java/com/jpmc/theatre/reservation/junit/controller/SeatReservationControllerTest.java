@@ -2,6 +2,7 @@ package com.jpmc.theatre.reservation.junit.controller;
 
 import com.jpmc.theater.reservation.controller.SeatReservationController;
 import com.jpmc.theater.reservation.dto.Reservation;
+import com.jpmc.theater.reservation.enums.ScheduleFormat;
 import com.jpmc.theater.reservation.exception.ErrorCode;
 import com.jpmc.theater.reservation.service.SeatReservationService;
 import com.jpmc.theatre.reservation.utils.TestUtil;
@@ -41,9 +42,9 @@ public class SeatReservationControllerTest extends BaseControllerTestUtils {
         mockMvc = getCustomizedMockMvc(MockMvcBuilders.standaloneSetup(seatReservationController));
     }
 
-    // Method to test get show schedule successfully
+    // Method to test get show schedule in json format successfully
     @Test
-    public void testShowScheduleSuccess() throws Exception {
+    public void testShowScheduleJsonSuccess() throws Exception {
         when(seatReservationService.listShowSchedule()).thenReturn(TestUtil.listShowSchedule());
         mockMvc.perform(
                     get(SHOW_SCHEDULE_URL)
@@ -53,6 +54,22 @@ public class SeatReservationControllerTest extends BaseControllerTestUtils {
                 .andReturn();
 
         verify(seatReservationService, times(1)).listShowSchedule();
+        verifyNoMoreInteractions(seatReservationService);
+
+    }
+
+    // Method to test get show schedule in text format successfully
+    @Test
+    public void testShowScheduleTextSuccess() throws Exception {
+        when(seatReservationService.listShowScheduleInTextFormat()).thenReturn(TestUtil.listShowScheduleInTextFormat());
+        mockMvc.perform(
+                        get(SHOW_SCHEDULE_URL).queryParam(FORMAT, ScheduleFormat.text.name())
+                                .accept(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isOk())
+                .andReturn();
+
+        verify(seatReservationService, times(1)).listShowScheduleInTextFormat();
         verifyNoMoreInteractions(seatReservationService);
 
     }

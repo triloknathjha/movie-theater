@@ -12,6 +12,7 @@ import com.jpmc.theater.reservation.dto.Showing;
 import com.jpmc.theater.reservation.dto.Shows;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.List;
 
 public class TestUtil {
@@ -32,13 +33,14 @@ public class TestUtil {
         }
         return new Shows(schedule);
     }
-/*
-    public static List<Showing> listSchedule() {
-        if(schedule == null){
-            schedule = InitialRuleSetup.getShowingList();
+    public static String listShowScheduleInTextFormat(){
+        StringBuilder scheduleText= new StringBuilder();
+        for(Showing show:listShowSchedule().getShows()){
+            scheduleText.append(MessageFormat.format("{0}: {1} {2} {3} ${4} {5}", show.getSequenceOfTheDay(), show.getShowStartTime(), show.getMovie().getTitle(), show.getMovie().getRunningTime(), show.getDiscountedTicketPrice(), System.lineSeparator()));
         }
-        return schedule;
-    }*/
+        return scheduleText.toString();
+    }
+
 
     public static byte[] convertObjectToJsonBytes(Object object) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -48,19 +50,4 @@ public class TestUtil {
         return mapper.writeValueAsBytes(object);
     }
 
-/*    public static String convertObjectToJsonString(Object object) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        return mapper.writeValueAsString(object);
-    }
-
-    public static <T> Object convertJsonStringToObject(String jsonString, T objectType) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        return mapper.readValue(jsonString,objectType.getClass());
-    }*/
 }

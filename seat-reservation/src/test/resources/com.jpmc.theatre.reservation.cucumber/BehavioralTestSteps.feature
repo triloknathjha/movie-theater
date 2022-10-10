@@ -7,6 +7,11 @@ Feature: Testing a API
     Then receive 200 response status code
     And receive a non-empty Get valid response
 
+  Scenario: Show schedule retrieval from a service in text format
+    When make a GET call on /shows/schedule?format=text
+    Then receive 200 response status code
+    And receive a non-empty Get valid text response
+
   Scenario: Seat Reservation
     When make a POST call on /seats/reserve
     Then receive 200 response status code
